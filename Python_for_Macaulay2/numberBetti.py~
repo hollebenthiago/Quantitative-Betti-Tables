@@ -5,7 +5,7 @@ import scipy.special as sci
 var = int(input("How many variables?"))
 rep = int(input("How many randomly generated ideals?"))
 ring = input("Over which ring?")
-arq = open('./Simulations/numBetti/'+str(var)+'vardeg'+str(rep)+'rep'+ring,'r')
+arq = open('/home/tholleben/Desktop/Álgebra/Macaulay2/numBetti/'+str(var)+'vardeg'+str(rep)+'rep'+ring,'r')
 yss = []
 badyss = arq.read()
 badyss = str.split(badyss, '\n')
@@ -28,5 +28,5 @@ elif var == 5 and (ring == "Q" or ring == "R" or ring == "C" or  len(ring) > 1):
     plt.yticks([1,2,3,4,5])
 
 plt.legend()
-plt.savefig('./Simulation_results/Number_Betti_Tables ' + ring + '/'+str(var)+ '_var_'+'deg_'+str(rep)+'_'+ ring)
+plt.savefig('/home/tholleben/Desktop/experiments/Number Betti Tables ' + ring + '/'+str(var)+ '_var_'+'deg_'+str(rep)+'_'+ ring)
 plt.show()

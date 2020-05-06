@@ -14,7 +14,7 @@ N = int(input("End of table:"))-2
 rcParams['font.family'] = 'serif'
 rcParams['font.size'] = sizefont
 
-arq = open('./Simulations/probBetti/'+str(var)+'var'+str(deg)+'degprob'+str(rep)+'rep'+rR+sS,'r')
+arq = open('/home/tholleben/Desktop/Álgebra/Macaulay2/probBetti/'+str(var)+'var'+str(deg)+'degprob'+str(rep)+'rep'+rR+sS,'r')
 
 
 
@@ -138,5 +138,5 @@ plt.axis([0, 10*(n + 1), 10*(m + 1), 0])
 plt.xticks(np.linspace(0, 10*(n + 1), n + 2), [])
 plt.yticks(np.linspace(0, 10*(m + 1), m + 2), [])
 plt.grid(linestyle="solid")
-plt.savefig("./Simulation_results/Prob_Betti_Tables/"+str(var) + "_var_" + str(deg) + "_deg_"+str(rep)+"_rep_prob_"+str(M+2)+"_beg_"+str(N+2)+"_end_"+ rR + sS + ".png" , dpi=300)
+plt.savefig("/home/tholleben/Desktop/experiments/Prob Betti Tables/"+str(var) + "_var_" + str(deg) + "_deg_"+str(rep)+"_rep_prob_"+str(M+2)+"_beg_"+str(N+2)+"_end_"+ rR + sS + ".png" , dpi=300)
 plt.show()

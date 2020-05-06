@@ -1,9 +1,10 @@
 restart
-load("./Macaulay2/RandomBetti.m2");
+path = append(path, "/home/tholleben/Desktop/Álgebra/Macaulay2/");
+load("RandomBetti.m2");
 R = ZZ/5;
 rR = "Z_5";
 var = 4
-rep = 5
+rep = 1000
 badlists = {}
 for i from 2 to var-1 do{
     badele = numBettiGraph(R,var,i,rep);
@@ -17,7 +18,7 @@ for i to #badlists-1 do{
 }
 goodl
 
-file = concatenate("./Simulations/numBetti/",toString(var), "var", "deg", toString(rep), "rep", rR)
+file = concatenate("/home/tholleben/Desktop/Álgebra/Macaulay2/numBetti/",toString(var), "var", "deg", toString(rep), "rep", rR)
 for i to #goodl-1 do{
     file << goodl#i << endl;
     }

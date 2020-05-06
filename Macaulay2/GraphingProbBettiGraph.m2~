@@ -1,12 +1,13 @@
 restart
-load("./Macaulay2/RandomBetti.m2");
-rR = "Z_2"; -- ring 1
-sS = "Z_3"; -- ring 2
-var = 7 -- number of variables
-deg = 2 -- degree of the generators
+path = append(path, "/home/tholleben/Desktop/Álgebra/Macaulay2/");
+load("RandomBetti.m2");
+rR = "Z_2";
+sS = "Z_3";
+var = 7
+deg = 2
 R = ZZ/2[x_1..x_var]
 S = ZZ/3[x_1..x_var]
-rep = 5 -- number of calculations, careful: it may take a long time
+rep = 50000
 llr = for i from 2 to binomial(var,deg)-1 list probBettiGraph(R,i,deg,rep);
 print("first ring done")
 lr = {}
@@ -22,7 +23,7 @@ for i to #lls-1 do {
     qi = for k to #lls#i -1 list (toString lls#i#k#0, toString lls#i#k#1_RR);
     ls = append(ls, qi)
 }
-file = concatenate("./Simulations/probBetti/",toString(var), "var",toString(deg), "degprob", toString(rep), "rep",rR,sS)
+file = concatenate("/home/tholleben/Desktop/Álgebra/Macaulay2/probBetti/",toString(var), "var",toString(deg), "degprob", toString(rep), "rep",rR,sS)
 for i to #lr-1 do{
     for j to #lr#i-1 do{
     	file << lr#i#j#0 << endl;
