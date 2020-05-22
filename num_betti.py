@@ -48,7 +48,7 @@ plt.figure(figsize=(15,5))
 if len(rR) == 2:
     plt.title('Estimated number of possible Betti tables of equigenerated squarefree monomial ideals in ' + str(n) + ' variables over $\mathbb{'+ rR[0]+'}$')
 elif len(rR) > 2:
-    plt.title('Estimated number of possible Betti tables of equigenerated squarefree monomial ideals in ' + str(n) + ' variables over $\mathbb{'+ rR[0]+'}' + rR[1:] + '$')
+    plt.title('Estimated number of possible Betti tables of equigenerated squarefree monomial ideals in ' + str(n) + ' variables over $\mathbb{'+ rR[0]+'}' + rR[2:] + '$')
 for i,y in enumerate(goodys):
     plt.plot(range(2,int(sci.binom(n,i+2))), y, '--.', label = 'Degree ' + str(i+2))
 plt.ylabel('Number of possible Betti tables')
