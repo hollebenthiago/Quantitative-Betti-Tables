@@ -7,14 +7,8 @@ import scipy.special as sci
 R  = input('Base ring (QQ, ZZ, or ZZ/q for the finite field F_q): ')
 n = int(input('Number of variables: '))
 rep = int(input('Number of repetitions: '))
-
-if R == 'QQ':
-    rR = R
-elif R == 'ZZ':
-    rR = R
-else:
-    rR = f'Z_%s' %(R)
-
+rR = R.replace('/','_')
+print(rR)
 f = open('num_betti.m2', 'w+')
 f.write('load("./Macaulay2/RandomBetti.m2"); \n')
 f.write(f'R = %s; \n' %(R))
@@ -40,7 +34,7 @@ f.close()
 
 os.system('M2 num_betti.m2')
 
-arq = open('./Simulations/numBetti/'+str(n)+'vardeg'+str(rep)+'rep'+R,'r')
+arq = open('./Simulations/numBetti/'+str(n)+'vardeg'+str(rep)+'rep'+rR,'r')
 yss = []
 badyss = arq.read()
 badyss = str.split(badyss, '\n')
@@ -64,7 +58,7 @@ if n == 4:
     plt.yticks([1,2])
 
 plt.legend()
-plt.savefig('./Simulation_results/Number_Betti_Tables_' + R + '/'+str(n)+ '_var_'+'deg_'+str(rep)+'_'+ R)
+plt.savefig('./Simulations_results/Number_Betti_Tables_' + rR + '/'+str(n)+ '_var_'+'deg_'+str(rep)+'_'+ rR)
 plt.show()
 
     
