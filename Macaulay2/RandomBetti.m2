@@ -30,7 +30,7 @@ numBettiGraph(Ring,ZZ,ZZ,ZZ) := (A,variables,degree,repetitions)->(
 	D := A[x_1..x_variables];
 	maxi := binomial(variables,degree)-1;
 	l := for i from 2 to maxi list unique(
-	for j from 0 to repetitions list betti res rSFMI(i:degree,D)) do print(i);
+	for j from 0 to repetitions list betti res rSFMI(i:degree,D));
 	numm := for v from 0 to maxi-2 list #l#v;
 	numm 
 )

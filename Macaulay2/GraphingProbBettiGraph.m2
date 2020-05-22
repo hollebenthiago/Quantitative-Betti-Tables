@@ -1,5 +1,5 @@
 restart
-load("./Macaulay2/RandomBetti.m2");
+load("./RandomBetti.m2");
 rR = "Z_2"; -- ring 1
 sS = "Z_3"; -- ring 2
 var = 7 -- number of variables
