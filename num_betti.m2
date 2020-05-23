@@ -1,6 +1,6 @@
 load("./Macaulay2/RandomBetti.m2"); 
-R = QQ; 
-rR = "QQ"; 
+R = ZZ/2; 
+rR = "ZZ_2"; 
 var = 7; 
 rep = 50000; 
 badlists = {}; 
