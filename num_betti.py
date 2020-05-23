@@ -4,7 +4,7 @@ import numpy as np
 import scipy.special as sci
 #os.system('M2 m2teste.m2')
 
-R  = input('Base ring (QQ, ZZ, or ZZ/q for the finite field F_q): ')
+R  = input('Base ring (QQ, ZZ, or ZZ/p for the finite field ZZ/pZZ): ')
 n = int(input('Number of variables: '))
 rep = int(input('Number of repetitions: '))
 rR = R.replace('/','_')
