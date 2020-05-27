@@ -1,8 +1,8 @@
 load("./Macaulay2/RandomBetti.m2"); 
-R = ZZ/2; 
-rR = "ZZ_2"; 
+R = QQ; 
+rR = "QQ"; 
 var = 8; 
-rep = 80000; 
+rep = 100000; 
 badlists = {}; 
 for i from 2 to var-1 do { 
    badele = numBettiGraph(R, var, i, rep); 
