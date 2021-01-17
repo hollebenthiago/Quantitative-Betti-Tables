@@ -75,3 +75,35 @@ randomPureBetti(Sequence,Ring,ZZ,MethodFunction) := (degrees,A,repetitions,funct
 	tally l
 )
 
+sizeBettiGraph = method();
+sizeBettiGraph(Graph) := (G)->(
+	I := edgeIdeal G;
+	projdim := pdim coker gens I;
+	reg := regularity coker gens I;
+	{projdim, reg}
+)
+
+numSizeBettiGraph = method();
+numSizeBettiGraph(Ring, ZZ, ZZ) := (A, variables, repetitions)->(
+	mini := variables - 1;
+	maxi := binomial(variables, 2) - 1;
+	R := A[x_1..x_variables];
+	sizes := {};
+	for i from mini to maxi do {
+		sizeList := {};
+		print i;
+		for j to repetitions do {
+			G := randomGraph(R, i);
+			if (isConnected G) then {
+				I := edgeIdeal G;
+				sizeList = append(sizeList, sizeBettiGraph(G));
+			};
+
+			if (j % 100 == 0) then (print j);
+		};
+		print(i, #(unique sizeList));
+		sizes = append(sizes, #(unique sizeList))
+	};
+	sizes
+)
+
