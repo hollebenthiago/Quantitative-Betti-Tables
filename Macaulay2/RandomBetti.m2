@@ -84,7 +84,7 @@ sizeBettiGraph(Graph) := (G)->(
 )
 
 numSizeBettiGraph = method();
-numSizeBettiGraph(Ring, ZZ, ZZ) := (A, variables, repetitions)->(
+numSizeBettiGraph(Ring, ZZ, ZZ, Boolean) := (A, variables, repetitions, connected)->(
 	mini := variables - 1;
 	maxi := binomial(variables, 2) - 1;
 	R := A[x_1..x_variables];
@@ -94,16 +94,45 @@ numSizeBettiGraph(Ring, ZZ, ZZ) := (A, variables, repetitions)->(
 		print i;
 		for j to repetitions do {
 			G := randomGraph(R, i);
-			if (isConnected G) then {
+			if ((isConnected G and isolatedVertices G == {}) or not connected) then {
 				I := edgeIdeal G;
 				sizeList = append(sizeList, sizeBettiGraph(G));
 			};
 
 			if (j % 100 == 0) then (print j);
 		};
-		print(i, #(unique sizeList));
-		sizes = append(sizes, #(unique sizeList))
+		sizes = append(sizes, #(unique sizeList));
+		print(i, #(unique sizeList), sizes);
 	};
 	sizes
 )
 
+frequencySizeBettiConnected = method();
+frequencySizeBettiConnected(Ring, ZZ, ZZ, ZZ) := (A, variables, e, repetitions)->(
+	l := {};
+	R := QQ[x_1..x_variables];
+	for i from 1 to repetitions do {
+		G := randomGraph(R, e);	
+		if (isConnected G and isolatedVertices G == {}) then {
+			I := edgeIdeal G;
+			l = append(l, sizeBettiGraph(G));
+		};
+		if (i % 100 == 0) then (print i);
+	};
+	tally l
+)
+
+frequencySizeBetti = method();
+frequencySizeBetti(Ring, ZZ, ZZ, ZZ) := (A, variables, e, repetitions)->(
+
+	l := {};
+	R := QQ[x_1..x_variables];
+	for i from 1 to repetitions do {
+		G := randomGraph(R, e);	
+		I := edgeIdeal G;
+		l = append(l, sizeBettiGraph(G));
+
+		if (i % 100 == 0) then (print i);
+	};
+	tally l
+)
